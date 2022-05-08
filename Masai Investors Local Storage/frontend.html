@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <title>Document</title>
+    <style>
+        #conatiner{
+            display: grid;
+            margin: auto;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 100px;
+            border: 1px solid red;
+            gap: 20px;
+        }
+        #container>div{
+            margin: 20px 10px 20px 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 20%;
+            height: 80%;
+            border: 1px solid red;
+            width: 23%;
+        }
+        p{
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="frontend.html">Frontend</a>
+        <a href="backend.html">Backend</a>
+    </div>
+    <div id="conatiner"></div>
+</body>
+</html>
+
+
+<script>
+    var investorsArr = JSON.parse(localStorage.getItem("investorData"));
+    investorsArr.forEach(element => {
+        var card =  document.createElement("div");
+        var Img = document.createElement("img");
+        var name = document.createElement("h3");
+        var role = document.createElement("p");
+        var logo = document.createElement("img");
+
+
+        Img.setAttribute("src", element.investorImg);
+        name.innerText=element.investorName;
+        role.innerText=element.investorRole;
+        logo.setAttribute("src", element.investorCompanyLogo);
+
+        document.querySelector("#container").append(card)
+        card.append(Img,name,role,logo);
+        
+    });
+
+  
+  
+  
+  </script>

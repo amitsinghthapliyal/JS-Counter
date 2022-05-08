@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <title>Backend</title>
+    <style>
+       #investorForm{
+           width: 400px;
+           margin: auto;
+           margin-top: 40px;
+           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+           padding: 20px;
+           background-color: teal;
+       }
+       input{
+          display: block;
+          font-size: 20px;
+          padding: 10px;
+          margin: 5px;
+       }
+       #submit{
+           color: teal;
+       }
+       #investorForm>h2{
+           color: white;
+           margin-bottom: 10px;
+       }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="frontend.html">Frontend</a>
+        <a href="backend.html">Backend</a>
+    </div>
+
+    <form id="investorForm">
+        <h2>Enter the Investor details:</h2>
+        <input id="name" type="text" placeholder="Investor Name"/>
+        <input id="imgURL" type="text" placeholder="Investor Image URL"/>
+        <input id="companyLogo" type="text" placeholder="Company Logo URL"/>
+        <input id="role" type="text" placeholder="Investor Role"/>
+        <input id="submit" type="submit"/>
+    </form>
+    
+
+</body>
+</html>
+
+<script>
+    document.querySelector("#investorForm").addEventListener("submit", investorFun);
+
+    var investorArr = [];
+    function investorFun(){
+        event.preventDefault();
+
+        var investorObj = {
+            investorName: investorForm.name.value,
+            investorImg: investorForm.imgURL.value,
+            investorCompanyLogo: investorForm.companyLogo.value,
+            investorRole: investorForm.role.value
+        };
+        investorArr.push(investorObj);
+        console.log(investorArr)
+        localStorage.setItem("investorData", JSON.stringify(investorArr))
+    }
+</script>
